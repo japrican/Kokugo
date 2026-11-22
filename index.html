@@ -154,6 +154,33 @@ body.navon .bnav{display:flex}
 .lvbox h3{font-size:22px}.lvbox p{color:var(--mute);font-size:14px;margin:4px 0 16px}
 .cf{position:fixed;top:-12px;width:9px;height:14px;border-radius:2px;z-index:130;pointer-events:none;animation:fall linear forwards}
 @keyframes fall{to{transform:translate(var(--dx),105vh) rotate(var(--r))}}
+/* ===== テスト前チェック ===== */
+.tlead{font-size:13px;color:var(--mute);margin:2px 0 6px}
+.tsel{display:grid;gap:8px;margin:4px 0 14px}
+.tall{justify-self:end;font-size:13px;color:var(--blue-d);font-family:var(--round);font-weight:800;padding:4px 6px}
+.tu{display:flex;align-items:center;gap:12px;border:2px solid var(--line);border-bottom-width:4px;border-radius:16px;padding:10px 14px;cursor:pointer}
+.tu input{display:none}
+.tbox{width:28px;height:28px;border-radius:8px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;color:transparent;font-size:18px;flex-shrink:0}
+.tu.on{border-color:var(--c);background:var(--cl)}.tu.on .tbox{background:var(--c);border-color:var(--c);color:#fff}
+.tt{font-size:15px;color:var(--ink);line-height:1.4}.tt small{display:block;font-size:11px;color:var(--mute)}
+.tsum{border:2px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:12px}
+.tsum.off{opacity:.5}.tsum small{display:block;font-size:12px;color:var(--mute)}.tsum b{font-family:var(--round);font-weight:800;color:var(--ink)}
+.tclear{font-size:13px;color:var(--mute);padding:6px;text-decoration:underline}
+.ckcount{font-family:var(--round);font-weight:800;font-size:14px;color:var(--ink);white-space:nowrap}
+.cktools{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 12px}
+.cktools button{display:flex;align-items:center;gap:4px;border:2px solid var(--line);border-radius:12px;padding:5px 12px;font-size:13px;color:var(--ink)}
+.cktools button.on{border-color:var(--c);background:var(--cl)}
+.ckg{margin-bottom:16px}.ckg h3{font-size:14px;color:var(--c);margin-bottom:6px}
+.ckl{list-style:none;display:grid;gap:8px}
+.ck{display:flex;gap:10px;align-items:flex-start;border:2px solid var(--line);border-radius:14px;padding:10px 12px;background:#fff}
+.ckb{flex-shrink:0;width:30px;height:30px;border-radius:50%;border:2px solid var(--line);color:transparent;display:flex;align-items:center;justify-content:center;font-size:18px;margin-top:1px}
+.ck.done{background:#f3fce9;border-color:#bfe9a0}.ck.done .ckb{background:var(--green);border-color:var(--green);color:#fff}
+.ckq{flex:1;cursor:pointer;min-width:0}
+.ckq b{display:block;font-size:15px;color:var(--ink);line-height:1.55}
+.cka{display:none;font-size:15px;color:var(--c);margin-top:4px;line-height:1.55;font-weight:700}
+.ckh{display:block;font-style:normal;font-size:11px;color:#afafaf;margin-top:2px}
+.ck.open .cka{display:block}.ck.open .ckh{display:none}
+.ckcard{border-color:var(--cl);background:linear-gradient(#fff,#fff) padding-box}
 /* 例文 */
 .sen{list-style:none}
 .sen li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px dashed var(--line)}
@@ -169,6 +196,7 @@ body.navon .bnav{display:flex}
 .fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em}
 .fr>span:last-child{padding:0 .18em}
 /* 問題 */
+.qtag.adv{color:#fff;background:var(--c);border-color:var(--c)}
 .qtag{display:inline-block;font-size:12px;color:var(--c);border:2px solid var(--cl);border-radius:10px;padding:1px 10px;margin:4px 0 10px;font-family:var(--round);font-weight:800}
 .qtext{font-size:20px;color:var(--ink);line-height:1.7;min-height:64px;margin-bottom:16px}
 .opts{display:grid;gap:10px}
@@ -203,7 +231,7 @@ body.navon .bnav{display:flex}
 .sbox b{display:block;font-family:var(--round);font-weight:800;font-size:24px;color:var(--ink);padding:8px}
 .miss{text-align:left}
 .miss li{list-style:none;border:2px solid var(--line);border-radius:14px;padding:10px 14px;margin-bottom:8px;font-size:14px;color:var(--ink)}
-.miss li span{display:block;color:var(--green-d);margin-top:2px}
+.miss li>span{display:block;color:var(--green-d);margin-top:2px}
 .stack{display:grid;gap:12px;margin-top:16px}
 /* 復習 */
 .empty{text-align:center;color:var(--mute);padding:40px 10px}
@@ -249,8 +277,9 @@ body:not(.home) .hint,body:not(.home) .trial{display:none}
   <div class="lh"><small id="pTag"></small><h2 id="pTitle"></h2><p id="pSub"></p></div>
   <div class="card"><h3><span data-ic="bulb"></span>ポイント</h3><div id="pFig"></div><ul class="pts" id="pList"></ul></div>
   <div class="card" id="senCard"><h3><span data-ic="chat"></span>例文</h3><ul class="sen" id="senList"></ul></div>
+  <div class="card ckcard" id="ckCard"><h3><span data-ic="clip"></span>ここだけはチェック</h3><ul class="ckl" id="ckUnit"></ul></div>
   <div class="card" id="exCard"><h3><span data-ic="pencil"></span>例題</h3><div class="exq" id="exQ"></div><ol class="exa" id="exA"></ol><button class="reveal" id="exBtn" onclick="showEx()">解き方を見る</button></div>
-  <button class="btn pri" onclick="startQuiz()">問題をとく（5問）</button>
+  <button class="btn pri" id="startBtn" onclick="startQuiz()">問題をとく</button>
  </section>
 
  <!-- 問題 -->
@@ -269,6 +298,18 @@ body:not(.home) .hint,body:not(.home) .trial{display:none}
  <!-- 結果 -->
  <section class="scr" id="sResult"><div class="res" id="res"></div></section>
 
+ <!-- テスト前チェック -->
+ <section class="scr" id="sTest">
+  <div class="top"><div class="logo">国</div><h1><small>ここだけはおさえる</small>テスト前チェック</h1></div>
+  <div id="tst"></div>
+ </section>
+ <section class="scr" id="sCheck">
+  <div class="xbar"><button class="xbtn" onclick="go('sTest')" aria-label="もどる"><span data-ic="x"></span></button><div class="pbar"><i id="ckBar"></i></div><span class="ckcount" id="ckCount"></span></div>
+  <div class="cktools"><button id="ckOnly" onclick="ckOnly=!ckOnly;renderCheck()"></button><button onclick="ckOpenAll=!ckOpenAll;renderCheck()" id="ckOpen"></button></div>
+  <div id="ckList"></div>
+  <div class="stack" style="margin-top:18px"><button class="btn pri" onclick="startRangeTest()">この範囲から10問テスト</button><button class="btn sub" onclick="go('sTest')">範囲をえらびなおす</button></div>
+ </section>
+
  <!-- 復習 -->
  <section class="scr" id="sReview">
   <div class="top"><div class="logo">国</div><h1><small>まちがえた問題</small>復習</h1></div>
@@ -278,6 +319,7 @@ body:not(.home) .hint,body:not(.home) .trial{display:none}
 
 <nav class="bnav" id="bnav">
  <button data-k="home" onclick="go('sHome')"><span class="bi" data-ic="home"></span>学習</button>
+ <button data-k="test" onclick="go('sTest')"><span class="bi" data-ic="clip"></span>テスト前</button>
  <button data-k="review" onclick="go('sReview')"><span class="bi" data-ic="redo"></span>復習<span class="badge" id="rvBadge" hidden></span></button>
  <a href="https://manabino-mikata.com/portal/"><span class="bi" data-ic="grid"></span>ほかの教科</a>
 </nav>
@@ -296,7 +338,7 @@ body:not(.home) .hint,body:not(.home) .trial{display:none}
 
 <script>
 const APP_ID='kokugo';
-const UNITS=[];
+const UNITS=[];const ADV={};const CK={};
 const AUDIO={};
 </script>
 <script>
@@ -682,6 +724,310 @@ UNITS.push(
  ]}
 );
 
+// 国語 応用問題
+Object.assign(ADV,{
+'文節と単語':[
+ ['「友達と　公園で　遊んで　いる。」の文節の数は？','4',['3','5','6'],'友達と／公園で／遊んで／いる。「いる」は補助動詞で独立した文節です。'],
+ ['「美しい　花が　咲いて　いた。」の単語の数は？','7',['5','6','8'],'美しい／花／が／咲い／て／い／た の7単語。「いた」は補助動詞「い」＋助動詞「た」。'],
+ ['「彼は　急いで　駅へ　向かった。」の単語の数は？','8',['4','6','7'],'彼／は／急い／で／駅／へ／向かっ／た の8単語。'],
+ ['付属語だけを正しく選んだものは？','が・た・れる',['花・が・た','急ぐ・て・は','とても・が・の'],'付属語は助詞（が）と助動詞（た・れる）です。'],
+ ['「この　本は　とても　おもしろい。」で、自立語の数は？','4',['3','5','6'],'この・本・とても・おもしろい の4つ。「は」は付属語。']
+],
+'文節どうしの関係':[
+ ['「妹も　いっしょに　来た。」の主語は？','妹も',['いっしょに','来た','ない'],'「も」がついていても、「だれが」にあたるので主語。'],
+ ['「寒いので、コートを　着た。」の「寒いので」は？','接続語',['主語','修飾語','独立語'],'理由を表して、あとにつないでいます。'],
+ ['「白くて　大きな　犬が　走る。」で、「白くて」が係る文節は？','犬が',['大きな','走る','白くて'],'「白くて　大きな」が並立の関係で、まとめて「犬が」を修飾します。'],
+ ['「ぼくの　兄は　高校生だ。」の述語は？','高校生だ',['兄は','ぼくの','だ'],'「何だ」にあたる部分。'],
+ ['「花が　咲いて　いる。」の「咲いて　いる」全体の役割は？','述部（補助の関係でひとまとまり）',['主部','修飾部','独立部'],'補助の関係の文節は、まとめて1つの述部になります。']
+],
+'品詞の分類':[
+ ['「きれいな」の品詞は？','形容動詞',['形容詞','連体詞','名詞'],'言い切り「きれいだ」。'],
+ ['「しかし」の品詞は？','接続詞',['副詞','感動詞','助詞'],'文と文をつなぐ。'],
+ ['「ああ」の品詞は？','感動詞',['接続詞','副詞','名詞'],'感動を表す。'],
+ ['「その」の品詞は？','連体詞',['代名詞','副詞','形容詞'],'体言だけをくわしくし、活用しません。「それ」は代名詞。'],
+ ['次の文で、品詞が他とちがうものは？「大きい・高い・静かな・寒い」','静かな',['大きい','高い','寒い'],'静かな は形容動詞、他は形容詞。']
+],
+'名詞':[
+ ['「三つ目の角を曲がる。」の「三つ目」は何名詞？','数詞',['普通名詞','固有名詞','形式名詞'],'順番を表す数詞。'],
+ ['「彼が来たときに出発した。」の「とき」は？','形式名詞',['普通名詞','副詞','接続詞'],'「来た」を受けて、本来の意味がうすれています。'],
+ ['「美しさ」の品詞は？','名詞',['形容詞','形容動詞','動詞'],'形容詞「美しい」に「さ」がついて名詞になったもの（転成名詞）。'],
+ ['動詞から名詞になった語（転成名詞）は？','遊び',['遊ぶ','遊んだ','遊べ'],'「遊ぶ」の連用形が名詞になったもの。'],
+ ['「どなた」の名詞の種類は？','代名詞',['普通名詞','固有名詞','数詞'],'人を指し示す代名詞。']
+],
+'動詞の活用の種類':[
+ ['「借りる」の活用の種類は？','上一段活用',['五段活用','下一段活用','カ行変格活用'],'借り ない（イ段）。'],
+ ['「帰る」の活用の種類は？','五段活用',['上一段活用','下一段活用','サ行変格活用'],'帰ら ない（ア段）。「〜る」でも五段のことがあります。'],
+ ['「信じる」の活用の種類は？','上一段活用',['サ行変格活用','五段活用','下一段活用'],'信じ ない（イ段）。'],
+ ['「来ない」の「来」の読み方と活用形は？','こ・未然形',['き・連用形','く・終止形','こ・連用形'],'カ変「来る」の未然形は「こ」。'],
+ ['次のうち、活用の種類が他とちがうものは？「起きる・見る・寝る・着る」','寝る',['起きる','見る','着る'],'寝ない（エ段）は下一段、他は上一段。']
+],
+'活用形':[
+ ['「書こう」の「書こ」の活用形は？','未然形',['連用形','終止形','仮定形'],'五段活用は「う」に続くとき未然形がオ段になります。'],
+ ['「走った」の「走っ」の活用形は？','連用形',['未然形','終止形','仮定形'],'「た」に続くのは連用形（促音便）。'],
+ ['「静かならば」の「静かなら」の活用形は？','仮定形',['未然形','連体形','終止形'],'形容動詞の仮定形。'],
+ ['「美しかろう」の「美しかろ」の活用形は？','未然形',['連用形','仮定形','命令形'],'形容詞の未然形は「かろ」。'],
+ ['「勉強すれば」の「すれ」の活用形は？','仮定形',['未然形','連用形','命令形'],'サ変の仮定形。']
+],
+'形容詞・形容動詞':[
+ ['「楽しくない」の「楽しく」の活用形は？','連用形',['未然形','終止形','仮定形'],'形容詞は「ない」に続くとき連用形「く」。'],
+ ['「元気だった」の「元気だっ」の活用形は？','連用形',['未然形','終止形','連体形'],'「た」に続くのは連用形。'],
+ ['形容動詞をふくむ文は？','部屋の中はとても静かだ。',['これは私の本だ。','明日は雨だ。','彼は学生だ。'],'「とても静かだ」と程度の副詞で修飾できるのが形容動詞。他は名詞＋だ。'],
+ ['「大きな」と「大きい」の品詞の組み合わせは？','連体詞と形容詞',['形容詞と形容詞','連体詞と連体詞','形容動詞と形容詞'],'「大きな」は活用しない連体詞。'],
+ ['「暖かければ」の活用形は？','仮定形',['未然形','連用形','連体形'],'「ば」に続く形容詞の仮定形。']
+],
+'副詞・連体詞':[
+ ['「たぶん」と呼応する表現は？','〜だろう',['〜ない','〜ようだ','〜ならば'],'推量の呼応。'],
+ ['「どうか」と呼応する表現は？','〜ください',['〜ない','〜だろう','〜ようだ'],'願望・依頼の呼応。'],
+ ['「もし雨が降ったら、中止だ。」で「もし」と呼応している文節は？','降ったら',['雨が','中止だ','もし'],'もし〜たら（仮定）の呼応。'],
+ ['連体詞をふくまない文は？','とても大切だ。',['いわゆる天才だ。','大きな木がある。','あらゆる手をつくす。'],'「とても」は副詞。いわゆる・大きな・あらゆる は連体詞。'],
+ ['「おかしな」と同じ品詞の語は？','いろんな',['おかしい','おかしく','おかしさ'],'どちらも活用しない連体詞。']
+],
+'接続詞・感動詞':[
+ ['「彼は努力した。（　　）、合格した。」に入るのは？','その結果',['しかし','ところで','または'],'順接（結果）。'],
+ ['「わかりました。（　　）、明日はどうしますか。」に入る転換の接続詞は？','では',['だから','けれども','しかも'],'話題を変える。'],
+ ['「彼は頭がよい。（　　）、スポーツも得意だ。」に入るのは？','しかも',['しかし','つまり','なぜなら'],'累加（つけ加え）。'],
+ ['「電車で行くか、（　　）バスで行くか。」に入るのは？','それとも',['だから','しかし','さて'],'選択の接続詞。'],
+ ['「いいえ、違います。」の「いいえ」の品詞と関係は？','感動詞・独立の関係',['副詞・修飾の関係','接続詞・接続の関係','名詞・主語'],'応答を表す感動詞で、独立語になります。']
+],
+'漢字の部首と熟語の組み立て':[
+ ['「国営」の構成は？','主語と述語',['似た意味','反対の意味','上が下を修飾'],'国が営む。'],
+ ['「非常識」の構成は？','打ち消しの接頭語＋熟語',['似た意味の組み合わせ','三字の対等な組み合わせ','熟語＋接尾語'],'非＋常識。'],
+ ['「投球」と同じ構成の熟語は？','読書',['豊富','前進','日没'],'球を投げる・書を読む（下が上の目的）。'],
+ ['「損得」と同じ構成の熟語は？','売買',['温暖','急増','県立'],'反対の意味の組み合わせ。'],
+ ['「建」の部首「廴」の名前と位置は？','えんにょう・にょう',['しんにょう・にょう','まだれ・たれ','くにがまえ・かまえ'],'左から下をかこむ部首を「にょう」といいます。']
+],
+'歴史的仮名遣い':[
+ ['「あはれ」を現代仮名遣いに直すと？','あわれ',['あはれ','あうれ','あいれ'],'語頭以外の「は」→「わ」。'],
+ ['「うつくしう」を現代仮名遣いに直すと？','うつくしゅう',['うつくしう','うつくしゅ','うつくしょう'],'「しう」（siu）→「しゅう」（syû）。'],
+ ['「まゐる」を現代仮名遣いに直すと？','まいる',['まうる','まえる','まゐる'],'「ゐ」→「い」。'],
+ ['「てふてふ（蝶）」を現代仮名遣いに直すと？','ちょうちょう',['てうてう','ちょちょ','ちゅうちゅう'],'「てふ」→「てう」（teu）→「ちょう」（tyô）。'],
+ ['「言はむ」を現代仮名遣いに直すと？','言わん',['言はん','言わむ','言うむ'],'「は」→「わ」、助動詞「む」→「ん」。']
+],
+'古文に親しむ　竹取物語':[
+ ['「竹取の翁」の「翁」の意味は？','おじいさん',['おばあさん','若者','子ども'],'「嫗（おうな）」がおばあさん。'],
+ ['「よろづのことに使ひけり」の「よろづ」の意味は？','いろいろな',['一万の','少しの','特別な'],'「さまざまなことに使った」。'],
+ ['「名をば、さぬきのみやつことなむいひける」で係り結びになっている語の組み合わせは？','なむ … ける',['名 … いひ','をば … いひ','さぬき … ける'],'「なむ」に対して文末が連体形「ける」。'],
+ ['かぐや姫が求婚者に出した難題の性質は？','実際には手に入れられない宝物を持ってこさせた',['和歌をよませた','戦いに勝たせた','かぐや姫と結婚させた'],'仏の御石の鉢、蓬莱の玉の枝など、どれも手に入らない物です。'],
+ ['「あやしがりて寄りて見るに」の「あやしがりて」の意味は？','不思議に思って',['あやしい人だと思って','こわがって','喜んで'],'「あやし」は「不思議だ」。']
+],
+'ことわざ・慣用句':[
+ ['「腕が上がる」の意味は？','技術が上達する',['力が強くなる','怒る','手をあげる'],'料理の腕が上がる、などと使います。'],
+ ['「馬の耳に念仏」と似た意味のことわざは？','猫に小判',['花より団子','急がば回れ','二階から目薬'],'どちらも「価値がわからない者には役に立たない」。'],
+ ['「さるも木から落ちる」と似た意味のことわざは？','かっぱの川流れ',['石橋をたたいてわたる','ぬかにくぎ','雨降って地固まる'],'名人でも失敗することがある。'],
+ ['「気が置けない」の正しい意味は？','気をつかわなくてよい、打ち解けている',['油断できない','信用できない','気がきかない'],'誤って「油断できない」の意味で使われやすい言葉です。'],
+ ['「情けは人のためならず」の正しい意味は？','人に親切にすれば、めぐりめぐって自分に返ってくる',['情けをかけると人のためにならない','人に親切にしてはいけない','情けは自分のためだけにある'],'誤解されやすいことわざです。']
+],
+'単文・重文・複文':[
+ ['「雨が降り、風もふいた。」は？','重文',['単文','複文','どれでもない'],'2つの主・述が対等に並んでいます。'],
+ ['「私は、母が焼いたパンを食べた。」は？','複文',['単文','重文','どれでもない'],'「母が焼いた」がパンを修飾しています。'],
+ ['「とても大きな犬が庭で元気に走っている。」は？','単文',['重文','複文','どれでもない'],'主・述は「犬が…走っている」の1つだけ。'],
+ ['「兄は野球が好きで、弟はサッカーが好きだ。」は？','重文',['単文','複文','どれでもない'],'兄は／好きで、弟は／好きだ が対等。'],
+ ['「彼が来ることをみんなが知っている。」は？','複文',['単文','重文','どれでもない'],'「彼が来る」が「こと」を修飾し、主・述が文の一部になっています。']
+],
+'助詞':[
+ ['「雨が降っているのに出かけた。」の「のに」の種類は？','接続助詞',['格助詞','副助詞','終助詞'],'逆接で前後をつないでいます。'],
+ ['「これは私の本だ。」の「の」の種類は？','格助詞',['接続助詞','副助詞','終助詞'],'連体修飾を示す格助詞。'],
+ ['「君だけが頼りだ。」の「だけ」の種類は？','副助詞',['格助詞','接続助詞','終助詞'],'限定の意味をそえる副助詞。'],
+ ['「暑いから窓を開けよう。」の「から」と同じ種類は？','時間がないので急ごう。の「ので」',['東京から来た。の「から」','木から落ちる。の「から」','米から酒をつくる。の「から」'],'用言について理由を表す接続助詞。'],
+ ['「よく来たな。」の「な」の種類は？','終助詞',['副助詞','格助詞','接続助詞'],'文末で感動を表します。']
+],
+'助動詞①':[
+ ['「先生が来られる。」の「られる」の意味は？','尊敬',['受け身','可能','自発'],'目上の人の動作。'],
+ ['「故郷の母がしのばれる。」の「れる」の意味は？','自発',['受け身','可能','尊敬'],'自然にそう思われる。'],
+ ['推量の「う」をふくむ文は？','この問題は難しかろう。',['いっしょに帰ろう。','ぼくがやろう。','早く寝よう。'],'「難しかろう」は推量。他は勧誘・意志。'],
+ ['「まだ食べない。」の「ない」と同じものは？','行かない',['少ない','時間がない','寒くない'],'「ぬ」に置きかえられる打ち消しの助動詞。'],
+ ['「弟に部屋をそうじさせる。」の「させる」の意味は？','使役',['受け身','可能','尊敬'],'人にさせる意味。']
+],
+'助動詞②':[
+ ['「彼は来ないらしい。」の「らしい」と同じものは？','明日は雨らしい。',['春らしい天気だ。','男らしい人だ。','かわいらしい花だ。'],'推定の助動詞。他は形容詞の一部（接尾語）。'],
+ ['「花が咲きそうだ。」の「そうだ」の意味は？','様態',['伝聞','推定','比喩'],'連用形につく。'],
+ ['「今にも泣き出しそうな顔」の「そうな」の意味は？','様態',['伝聞','推量','比喩'],'「そうだ」の連体形。連用形「泣き出し」につく様態。'],
+ ['「まるで夢を見ているようだ。」の「ようだ」の意味は？','比喩（たとえ）',['推定','例示','伝聞'],'「まるで」と呼応する比喩。'],
+ ['「あ、そうだ、今日は木曜日だった。」の「た」の意味は？','想起',['過去','完了','存続'],'忘れていたことを思い出す意味。']
+],
+'紛らわしい語の識別':[
+ ['「この部屋は静かでない。」の「ない」は？','補助形容詞',['助動詞','形容詞','形容詞の一部'],'「静かではない」と「は」を入れられます。'],
+ ['「はかない夢」の「ない」は？','形容詞の一部',['助動詞','形容詞','補助形容詞'],'「はかない」で一語の形容詞。'],
+ ['「彼は医者で、兄は教師だ。」の「で」は？','断定の助動詞「だ」の連用形',['格助詞','接続助詞','形容動詞の一部'],'「医者だ」の連用形。'],
+ ['「元気でよかった。」の「で」は？','形容動詞の活用語尾',['格助詞','断定の助動詞','接続助詞'],'「元気だ」の連用形「元気で」の一部です。'],
+ ['「これは兄のだ。」の「の」は？','体言の代用（＝もの）',['主語を示す','連体修飾','並立'],'「兄のもの」と言いかえられます。']
+],
+'敬語の種類':[
+ ['「お客様がいらっしゃる」の「いらっしゃる」の種類は？','尊敬語',['謙譲語','丁寧語','美化語'],'「来る」の尊敬語。'],
+ ['「先生にお会いする」の「お会いする」の種類は？','謙譲語',['尊敬語','丁寧語','どれでもない'],'「お〜する」は謙譲語。'],
+ ['「知る」の謙譲語は？','存じる',['ご存じだ','知られる','お知りになる'],'ご存じだ は尊敬語。'],
+ ['「くれる」の尊敬語は？','くださる',['いただく','さしあげる','もらう'],'いただく は「もらう」の謙譲語。'],
+ ['「お茶」「ご飯」の「お」「ご」のように、ものごとを上品に言う言葉を何という？','美化語',['尊敬語','謙譲語','丁寧語'],'美化語は丁寧語にふくめることもあります。']
+],
+'敬語の使い方':[
+ ['正しい敬語は？','校長先生がご覧になりました。',['校長先生が拝見しました。','校長先生が見させていただきました。','校長先生がご覧しました。'],'相手の動作には尊敬語「ご覧になる」。'],
+ ['「先生、明日、ご自宅にうかがってもよろしいですか。」の「うかがう」の使い方は？','正しい（自分の動作に謙譲語）',['誤り（尊敬語にすべき）','誤り（丁寧語にすべき）','誤り（相手の動作に使っている）'],'自分が行く動作をへりくだっています。'],
+ ['お客様に「どうぞ、お受け取りください。」と言うときの「お受け取り」の働きは？','相手の動作を高める尊敬の表現',['自分をへりくだる表現','ていねいなだけの表現','誤った表現'],'「お〜ください」は尊敬の表現。'],
+ ['二重敬語として正しくないとされるのは？','おっしゃられる',['おっしゃる','申し上げる','ご覧になる'],'「おっしゃる」に尊敬の「れる」を重ねた二重敬語です。'],
+ ['先生に対して「母がよろしくと申しておりました。」の使い方は？','正しい',['誤り（申す→おっしゃる）','誤り（おる→いらっしゃる）','誤り（母→お母さん）'],'身内の動作は謙譲語で表します。']
+],
+'類義語・対義語・四字熟語':[
+ ['「進歩」の対義語は？','退歩',['進化','前進','発達'],'進歩 ⇔ 退歩。'],
+ ['「抽象」の対義語は？','具体',['具象化','現実','理想'],'抽象 ⇔ 具体。'],
+ ['「一石二鳥」と似た意味の四字熟語は？','一挙両得',['一朝一夕','一進一退','一心同体'],'1つのことで2つの利益。'],
+ ['「自業自得」の意味は？','自分の行いの結果を自分が受けること',['自分で仕事を得ること','自分だけ得をすること','努力して成功すること'],'悪い結果について使うことが多い言葉です。'],
+ ['「（　　）変」で「その場に応じて適切に対処する」という四字熟語になるのは？','臨機応',['一朝一','千差万','大同小'],'臨機応変。']
+],
+'枕草子・徒然草':[
+ ['『枕草子』の「秋は夕暮れ」の段で、趣があるとしているものは？','からすが巣へ帰る様子や雁の列',['桜の花','ほたる','雪や霜'],'夕日のさす山の端にからすが急ぐ様子などをあげています。'],
+ ['『徒然草』「仁和寺にある法師」の教訓は？','少しのことにも先導者（案内者）はあってほしい',['神社には必ず行くべきだ','一人旅はよいものだ','山の上には何もない'],'案内がなかったため、本来の目的の石清水八幡宮を見ずに帰った話。'],
+ ['「冬はつとめて」の「つとめて」の意味は？','早朝',['努力して','夜','昼'],'冬は早朝がよい、という意味。'],
+ ['『方丈記』の冒頭「ゆく河の流れは絶えずして、しかももとの水にあらず」に表れている考え方は？','無常観',['勧善懲悪','もののあはれだけ','武士道'],'すべてのものは移り変わるという考え。'],
+ ['「あやしうこそものぐるほしけれ」の「こそ…けれ」は何の例？','係り結び（已然形）',['枕詞','掛詞','対句'],'「こそ」に対して文末が已然形「けれ」。']
+],
+'平家物語':[
+ ['「盛者必衰の理をあらはす」の意味は？','勢いの盛んな者も必ずおとろえるという道理を表す',['盛んな者はずっと栄える','おとろえた者が必ず盛り返す','理由を説明する'],'無常観を表す一節です。'],
+ ['「扇の的」の場面で、与一が祈った対象は？','神々（八幡大菩薩など）',['仏の御石の鉢','天皇','かぐや姫'],'「南無八幡大菩薩」と祈りました。'],
+ ['「ただ春の夜の夢のごとし」に使われている表現技法は？','直喩',['隠喩','擬人法','倒置法'],'「ごとし（ようだ）」を使ったたとえ。'],
+ ['「おごれる人も久しからず」と「たけき者も遂にはほろびぬ」の表現技法は？','対句',['倒置法','体言止め','反復'],'似た組み立ての句を並べています。'],
+ ['『平家物語』の文体の特徴は？','和漢混交文で、七五調のリズムがある',['すべて漢文','ひらがなだけの文','現代語'],'漢語とやまとことばが混じった力強い文体です。']
+],
+'漢文の基礎':[
+ ['「読㆑書」を書き下し文にすると？','書を読む',['読む書を','書読む','読書す'],'レ点で「書」から「読」に返ります。'],
+ ['「有㆓朋自㆑遠方来㆒」を読む順で正しいのは？','朋 → 遠方 → 自 → 来 → 有',['有 → 朋 → 自 → 遠方 → 来','朋 → 有 → 遠方 → 自 → 来','遠方 → 朋 → 自 → 有 → 来'],'「朋の遠方より来たる有り」。一・二点とレ点を組み合わせて読みます。'],
+ ['「不」を書き下し文で書くときは？','ひらがなの「ず」で書く',['漢字のまま「不」と書く','書かない','カタカナで書く'],'助動詞にあたる字はひらがなにします。'],
+ ['「学而時習㆑之」の書き下し文は？','学びて時に之を習ふ',['学ぶ時之を習ふ','時に学びて之を習ふ','之を学びて時に習ふ'],'「而」は置き字で読みません。'],
+ ['漢文で、書き下し文にするとき読まない字を何という？','置き字',['返り点','送りがな','句読点'],'「而」「於」「矣」などです。']
+],
+'漢詩の形式':[
+ ['「春眠暁を覚えず　処処啼鳥を聞く」の作者は？','孟浩然',['杜甫','李白','白居易'],'「春暁」は孟浩然の五言絶句。'],
+ ['五言絶句の総字数は？','20字',['28字','40字','56字'],'5字 × 4句。'],
+ ['律詩で、対句にするきまりがあるのは？','第3・4句と第5・6句',['第1・2句','第7・8句','すべての句'],'頷聯と頸聯を対句にします。'],
+ ['漢詩で、句の終わりに同じひびきの字をそろえることを何という？','押韻',['対句','返り点','起承転結'],'韻をふむことです。'],
+ ['「故人西のかた黄鶴楼を辞し」の「故人」の意味は？','古くからの友人',['亡くなった人','年老いた人','昔の人'],'李白が友人の孟浩然を見送る詩です。']
+],
+'係り結び':[
+ ['「花ぞ昔の香ににほひける」の結びの語「ける」の活用形は？','連体形',['終止形','已然形','未然形'],'「ぞ」の結びは連体形。'],
+ ['「命こそ惜しけれ」の現代語訳として正しいのは？','命こそが惜しい',['命は惜しくない','命が惜しいだろうか','命を惜しめ'],'「こそ」は強調。'],
+ ['反語の意味をもつ係りの助詞を使った文は？','誰か知らむ（いや、誰も知らない）',['花ぞ咲く','月こそ美しけれ','雪なむ降りける'],'「か」「や」は疑問・反語。'],
+ ['係り結びの「結び」が流れる（消える）のはどんなとき？','結ぶはずの語のあとに接続助詞などが続いて文が終わらないとき',['係りの助詞が2つあるとき','和歌のとき','文が短いとき'],'「結びの流れ（消滅）」といいます。'],
+ ['「こそ」で係って已然形で結ぶ例は？','音こそ聞こゆれ',['音ぞ聞こゆる','音なむ聞こゆる','音や聞こゆる'],'「聞こゆれ」が已然形。']
+],
+'古語の意味':[
+ ['古語「をかし」と「あはれ」のちがいは？','をかし＝明るく知的な趣、あはれ＝しみじみとした趣',['同じ意味','をかし＝悲しい、あはれ＝楽しい','をかし＝こっけい、あはれ＝かわいそう'],'『枕草子』は「をかし」、『源氏物語』は「あはれ」の文学といわれます。'],
+ ['古語「おどろく」の意味として多いのは？','目を覚ます・はっと気づく',['びっくりする','おどす','おどる'],'現代語とちがう意味があります。'],
+ ['古語「ゆかし」の意味は？','見たい・知りたい・心ひかれる',['ゆかいだ','ゆっくりだ','ゆかに近い'],'好奇心をひかれる様子。'],
+ ['古語「やがて」の意味は？','すぐに・そのまま',['そのうち','いつか','結局'],'現代語の「そのうち」とはちがいます。'],
+ ['助動詞「けり」の意味は？','過去・詠嘆',['打ち消し','推量','完了'],'「〜た」「〜だなあ」。']
+],
+'和歌':[
+ ['和歌の「句切れ」とは？','意味やリズムのうえで切れる所',['5音の句','和歌の最後','枕詞の位置'],'「〜けり」「〜かな」など文が終わる所で切れます。'],
+ ['「田子の浦にうち出でてみれば白妙の富士の高嶺に雪は降りつつ」の作者は？','山部赤人',['紀貫之','小野小町','柿本人麻呂'],'『新古今和歌集』『百人一首』に収められた形です（もとは『万葉集』）。'],
+ ['『古今和歌集』の歌の特徴は？','技巧的で優美',['素朴で力強い','余情を重んじる幽玄','口語で自由'],'掛詞などの技巧が多く使われます。'],
+ ['「花の色はうつりにけりないたづらにわが身世にふるながめせしまに」の「ふる」の掛詞は？','（年月が）経る と （雨が）降る',['古る と 震る','触る と 振る','降る と 古い'],'「ながめ」にも「長雨」と「眺め」がかかっています。'],
+ ['百人一首を選んだとされる人物は？','藤原定家',['紀貫之','大伴家持','松尾芭蕉'],'鎌倉時代初期にまとめたとされます。']
+],
+'おくのほそ道と俳句':[
+ ['「五月雨をあつめて早し最上川」の季節は？','夏',['春','秋','冬'],'五月雨（梅雨の雨）は夏の季語。'],
+ ['「荒海や佐渡に横たふ天河」の切れ字は？','や',['に','たふ','天河'],'切れ字「や」。'],
+ ['「閑かさや岩にしみ入る蝉の声」がよまれた寺は？','立石寺',['中尊寺','平等院','清水寺'],'山形県の立石寺（山寺）です。'],
+ ['「菜の花や月は東に日は西に」の作者は？','与謝蕪村',['松尾芭蕉','小林一茶','正岡子規'],'絵画的な句が特徴です。'],
+ ['「やせ蛙負けるな一茶これにあり」に表れている作者の特徴は？','小さな生き物へのやさしいまなざし',['豪華で雄大な表現','漢語を多く使う','無常観'],'小林一茶は身近な生き物を親しみをこめてよみました。']
+],
+'論語':[
+ ['「過ちて改めざる、是を過ちと謂ふ」の意味は？','過ちをして改めないことこそ、本当の過ちである',['過ちをしてはいけない','過ちは改める必要はない','過ちを言ってはいけない'],'過ちを改めることの大切さを説いています。'],
+ ['「学びて思はざれば則ち罔し」の意味は？','学んでも考えなければ、はっきりとはわからない',['学べば何も考えなくてよい','考えるだけでよい','学ぶと迷う'],'学ぶことと考えることの両方が大切だという教え。'],
+ ['「之を知る者は之を好む者に如かず」の意味は？','知っている人は、それを好きな人にはかなわない',['知っている人がいちばんだ','好きな人は知らない','好きになってはいけない'],'続けて「好む者は楽しむ者に如かず」。'],
+ ['論語の「子」が指すものは？','孔子（先生）',['子ども','弟子','王'],'「子」は男子の敬称で、ここでは孔子。'],
+ ['「朋あり遠方より来たる、亦楽しからずや」の「亦楽しからずや」の表現は？','反語（なんと楽しいことではないか）',['打ち消し（楽しくない）','疑問（楽しいのか）','命令（楽しめ）'],'強い肯定を表します。']
+],
+'詩・短歌の表現技法':[
+ ['「静かな、静かな夜」に使われている技法は？','反復',['倒置法','直喩','体言止め'],'同じ言葉をくり返して強調しています。'],
+ ['「ぼくは走った　風のように」に使われている技法は？','倒置法と直喩',['反復と隠喩','体言止めと擬人法','対句だけ'],'語順の入れかえと「ように」のたとえ。'],
+ ['口語で、音数に決まりのない詩を何という？','口語自由詩',['文語定型詩','口語定型詩','散文詩'],'現代の詩の多くは口語自由詩です。'],
+ ['短歌の「句切れ」が二句目の終わりにあるものを何という？','二句切れ',['初句切れ','三句切れ','句切れなし'],'5・7 で意味が切れる。'],
+ ['「月が笑っている」に使われている技法は？','擬人法',['直喩','倒置法','体言止め'],'月を人のように表しています。']
+],
+'近代の文学':[
+ ['『坊っちゃん』の作者と舞台は？','夏目漱石・松山',['森鷗外・東京','芥川龍之介・京都','太宰治・青森'],'漱石が松山で教師をした経験をもとにしています。'],
+ ['『走れメロス』のテーマは？','友情と信頼',['戦争の悲劇','自然の美しさ','学問の大切さ'],'メロスは友セリヌンティウスとの約束を守るために走ります。'],
+ ['『故郷』で、「私」と再会した閏土が「私」をよんだ言葉は？','旦那さま',['ジンちゃん','友よ','先生'],'身分の差による心の隔たりを表す場面です。'],
+ ['『羅生門』の下人の心の変化をえがいた結末は？','盗人になる決意をする',['仏門に入る','都を去って農民になる','老婆を助ける'],'生きるための悪を正当化して去っていきます。'],
+ ['樋口一葉の代表作は？','たけくらべ',['舞姫','雪国','人間失格'],'明治の女性作家で、五千円札の肖像にもなりました。']
+],
+'同音異義語・同訓異字':[
+ ['「品質を（　　）する」に入るのは？','保証',['保障','補償','保将'],'確かだと請け合う意味。'],
+ ['「損害を（　　）する」に入るのは？','補償',['保証','保障','補正'],'損失をつぐなう意味。'],
+ ['「安全を（　　）する」に入るのは？','保障',['保証','補償','保証人'],'守る意味。社会保障など。'],
+ ['「体重をはかる」の「はかる」は？','量る',['計る','測る','図る'],'重さ・容積は「量る」。'],
+ ['「解決をはかる」の「はかる」は？','図る',['計る','測る','量る'],'くわだてる・工夫する意味は「図る」。']
+],
+'説明文・論説文の読み方':[
+ ['「〜だろうか。」で問いかけたあと、次の段落でよく続くのは？','問いへの答えや筆者の考え',['関係のない話題','まったく同じ問い','物語'],'問題提起 → 答え・主張 の流れ。'],
+ ['「つまり」の働きは？','前の内容を言いかえたり、まとめたりする',['反対のことを述べる','理由を述べる','話題を変える'],'言いかえ・要約の接続語。'],
+ ['筆者の主張を要約するときに大切なことは？','具体例をはぶいて、中心となる考えをまとめる',['具体例をすべて書く','自分の感想を入れる','最初の一文だけ写す'],'例は主張を支える材料です。'],
+ ['論説文で「確かに」「もちろん」のあとに書かれやすいのは？','予想される反論への譲歩',['筆者の結論','具体例の結果','余談'],'反論をいったん認め、そのあとで主張を強めます。'],
+ ['尾括型の文章とは？','結論が文章の最後にある型',['結論が最初にある型','結論が最初と最後にある型','結論がない型'],'最初にある型は頭括型、両方は双括型。']
+],
+'故事成語':[
+ ['「杞憂」の意味は？','必要のない心配',['大きな希望','深い悲しみ','正しい判断'],'杞の国の人が天が落ちてこないかと心配した話から。'],
+ ['「推敲」の使い方として正しいのは？','作文を何度も推敲してから提出した',['友人を推敲して委員に選んだ','ドアを推敲して開けた','計画を推敲して中止した'],'文章を練り直すことです。'],
+ ['「蛍雪の功」の意味は？','苦労して学問にはげんだ成果',['夜に遊んだ思い出','冬の楽しみ','虫を集めること'],'蛍の光や雪明かりで読書した話から。'],
+ ['「塞翁が馬」の意味は？','人生の幸不幸は予測できない',['馬を大切にすべきだ','老人は物知りだ','国境を守るべきだ'],'不幸が幸運に、幸運が不幸に変わった話から。'],
+ ['「矛盾」の使い方として正しいのは？','言っていることとやっていることが矛盾している',['矛盾をもって戦う','矛盾な天気だ','矛盾に感謝する'],'つじつまが合わない様子。']
+],
+'熟語の読み方':[
+ ['「雨具」の読み方の種類は？','湯桶読み',['重箱読み','熟字訓','音読みどうし'],'あま（訓）＋グ（音）。'],
+ ['「荷物」の読み方の種類は？','湯桶読み',['重箱読み','訓読みどうし','熟字訓'],'に（訓）＋モツ（音）。'],
+ ['「役場」の読み方の種類は？','重箱読み',['湯桶読み','熟字訓','訓読みどうし'],'ヤク（音）＋ば（訓）。'],
+ ['熟字訓でないものは？','花火',['五月雨','七夕','果物'],'花火は はな（訓）＋び（訓）の訓読みどうし。'],
+ ['「生物」を「せいぶつ」と「なまもの」で読むと？','意味が変わる',['意味は同じ','どちらも誤り','どちらも熟字訓'],'読み方によって意味が変わる熟語があります。']
+],
+'文法の総まとめ':[
+ ['「少しも寒くない。」の「少しも」の品詞は？','副詞',['名詞','形容詞','連体詞'],'呼応の副詞（少しも〜ない）。'],
+ ['「私が行きます。」の「ます」の品詞は？','助動詞',['助詞','動詞','接続詞'],'丁寧の助動詞。活用する付属語。'],
+ ['「大きく育った。」の「大きく」の品詞と活用形は？','形容詞・連用形',['副詞','形容動詞・連用形','形容詞・未然形'],'言い切りは「大きい」。'],
+ ['「明日、図書館に行く。」の「明日」の品詞は？','名詞',['副詞','連体詞','接続詞'],'「明日が」と主語になれるので名詞（副詞的に使われています）。'],
+ ['「いろいろな本を読んだ。」の「いろいろな」の品詞は？','形容動詞',['連体詞','形容詞','副詞'],'言い切り「いろいろだ」と言えるので形容動詞（「いろんな」は連体詞）。']
+]
+});
+
+// 国語 テスト前チェック
+Object.assign(CK,{
+'文節と単語':[['文節の区切り方は？','「ネ」「サ」を入れて区切れる所'],['単語とは？','意味をもつ言葉の最小単位'],['1つの文節にふくまれる自立語の数は？','1つ']],
+'文節どうしの関係':[['文節どうしの関係（6つ）は？','主・述／修飾・被修飾／接続／独立／並立／補助'],['並立の関係の見分け方は？','入れかえても意味が変わらない'],['補助の関係の例は？','読んで　いる']],
+'品詞の分類':[['用言とは？','動詞・形容詞・形容動詞（活用する自立語）'],['付属語で活用するのは？','助動詞'],['体言とは？','名詞']],
+'名詞':[['名詞の種類（5つ）は？','普通・固有・数詞・代名詞・形式名詞'],['形式名詞の例は？','こと・もの・とき・ところ'],['名詞は主語になれる？','なれる']],
+'動詞の活用の種類':[['活用の種類の見分け方は？','「ない」をつけて直前の音で見分ける'],['ア段・イ段・エ段は？','五段・上一段・下一段'],['カ変・サ変の動詞は？','来る・する（〜する）']],
+'活用形':[['6つの活用形は？','未然・連用・終止・連体・仮定・命令'],['「ます・た・て」に続く活用形は？','連用形'],['「ば」に続く活用形は？','仮定形']],
+'形容詞・形容動詞':[['形容詞・形容動詞の言い切りの形は？','〜い・〜だ（です）'],['形容詞・形容動詞にない活用形は？','命令形'],['「大きな」の品詞は？','連体詞']],
+'副詞・連体詞':[['副詞の3つの種類は？','状態・程度・呼応（陳述）'],['「決して」「もし」と呼応するのは？','〜ない・〜ならば'],['連体詞の例は？','この・ある・あらゆる・大きな・いわゆる']],
+'接続詞・感動詞':[['順接・逆接の接続詞の例は？','だから・しかし'],['転換の接続詞の例は？','さて・ところで'],['感動詞のはたらきは？','感動・呼びかけ・応答・あいさつ']],
+'漢字の部首と熟語の組み立て':[['部首の7つの位置は？','へん・つくり・かんむり・あし・たれ・にょう・かまえ'],['打ち消しの接頭語は？','不・無・非・未'],['「読書」の構成は？','下が上の目的・対象（書を読む）']],
+'歴史的仮名遣い':[['語頭以外の「は・ひ・ふ・へ・ほ」は？','わ・い・う・え・お'],['「ゐ・ゑ・を」は？','い・え・お'],['「au」の音は？','「ô」（やう→よう）']],
+'古文に親しむ　竹取物語':[['『竹取物語』の成立した時代は？','平安時代初期（日本最古の物語）'],['古語「いと」「うつくし」の意味は？','とても・かわいらしい'],['冒頭は？','今は昔、竹取の翁といふもの有りけり。']],
+'ことわざ・慣用句':[['「急がば回れ」の意味は？','急ぐときほど確実な方法をとるほうがよい'],['「気が置けない」の正しい意味は？','気をつかわなくてよい'],['「情けは人のためならず」の正しい意味は？','親切はめぐりめぐって自分に返ってくる']],
+'単文・重文・複文':[['単文とは？','主・述の関係が1つ'],['重文とは？','主・述の関係が対等に並ぶ'],['複文とは？','主・述をふくむ部分が文の一部になっている']],
+'助詞':[['助詞の4つの種類は？','格助詞・接続助詞・副助詞・終助詞'],['格助詞の覚え方は？','を・に・が・と・より・で・から・の・へ・や（鬼が戸より出、空の部屋）'],['終助詞の例は？','か・な・よ・ね・ぞ']],
+'助動詞①':[['「れる・られる」の4つの意味は？','受け身・可能・自発・尊敬'],['「せる・させる」の意味は？','使役'],['「う・よう」の意味は？','推量・意志・勧誘']],
+'助動詞②':[['様態と伝聞の「そうだ」の見分け方は？','連用形につく＝様態、終止形につく＝伝聞'],['「まるで〜ようだ」の意味は？','比喩（たとえ）'],['推定の「らしい」と形容詞の一部の見分け方は？','「どうやら」を入れられれば推定']],
+'紛らわしい語の識別':[['助動詞「ない」の見分け方は？','「ぬ」に置きかえられる'],['補助形容詞「ない」の見分け方は？','直前に「は」を入れられる'],['「の」が「が」に置きかえられるときは？','主語を示す格助詞']],
+'敬語の種類':[['尊敬語・謙譲語・丁寧語のちがいは？','相手を高める・自分がへりくだる・ていねいに言う'],['「言う」の尊敬語・謙譲語は？','おっしゃる・申す（申し上げる）'],['「食べる」の尊敬語・謙譲語は？','召し上がる・いただく']],
+'敬語の使い方':[['相手の動作に使う敬語は？','尊敬語'],['外部の人に身内（上司）の動作を言うときは？','謙譲語を使う'],['「おっしゃられる」は正しい？','誤り（二重敬語）']],
+'類義語・対義語・四字熟語':[['「原因」「主観」の対義語は？','結果・客観'],['「一石二鳥」の意味は？','1つのことで2つの利益'],['「異口同音」の意味は？','多くの人が同じことを言う']],
+'枕草子・徒然草':[['『枕草子』の作者と冒頭は？','清少納言・春はあけぼの'],['『徒然草』の作者と冒頭は？','兼好法師・つれづれなるままに'],['三大随筆は？','枕草子・方丈記・徒然草']],
+'平家物語':[['『平家物語』のジャンルは？','軍記物語（鎌倉時代）'],['冒頭は？','祇園精舎の鐘の声、諸行無常の響きあり'],['流れている考え方は？','無常観']],
+'漢文の基礎':[['レ点と一・二点のちがいは？','1字返る・2字以上返る'],['書き下し文とは？','漢文を日本語の語順で漢字かな交じりにした文'],['置き字とは？','書き下すときに読まない字（而・於など）']],
+'漢詩の形式':[['絶句と律詩の句の数は？','4句・8句'],['1句の字数による分け方は？','五言・七言'],['絶句の構成は？','起・承・転・結']],
+'係り結び':[['ぞ・なむ・や・か の結びは？','連体形'],['こその結びは？','已然形'],['や・か の意味は？','疑問・反語']],
+'古語の意味':[['「ありがたし」の意味は？','めったにない'],['「をかし」と「あはれ」の意味は？','趣がある・しみじみとした趣'],['「つとめて」の意味は？','早朝']],
+'和歌':[['和歌の音数は？','五・七・五・七・七（31音）'],['最古の和歌集・最初の勅撰和歌集は？','万葉集・古今和歌集'],['枕詞・掛詞とは？','特定の語を導く言葉・1語に2つの意味を重ねる']],
+'おくのほそ道と俳句':[['『おくのほそ道』の作者と冒頭は？','松尾芭蕉・月日は百代の過客にして'],['俳句の切れ字は？','や・かな・けり'],['俳句に入れるきまりの言葉は？','季語']],
+'論語':[['『論語』とは？','孔子と弟子の言行をまとめた書物'],['「温故知新」の意味は？','昔のことを学び新しい知識を得る'],['「子曰はく」の「子」は？','孔子（先生）']],
+'詩・短歌の表現技法':[['直喩と隠喩のちがいは？','「ようだ」を使う・使わない'],['倒置法とは？','語順を入れかえて強調する'],['体言止めとは？','文末を名詞で終える']],
+'近代の文学':[['夏目漱石の作品は？','坊っちゃん・吾輩は猫である・こころ'],['芥川龍之介の作品は？','羅生門・蜘蛛の糸・トロッコ'],['『走れメロス』『故郷』の作者は？','太宰治・魯迅']],
+'同音異義語・同訓異字':[['保証・保障・補償の意味は？','請け合う・守る・つぐなう'],['「はかる」の使い分けは？','時間＝計る、長さ＝測る、重さ＝量る、くわだて＝図る'],['「おさめる」の使い分けは？','税＝納める、国＝治める、学問＝修める、成果＝収める']],
+'説明文・論説文の読み方':[['主張が来やすい言葉は？','つまり・このように・しかし のあと'],['論説文の構成は？','序論 → 本論 → 結論'],['事実と意見の見分け方は？','意見は筆者の考えや判断をふくむ']],
+'故事成語':[['「矛盾」の意味は？','つじつまが合わないこと'],['「蛇足」「推敲」の意味は？','よけいなつけ足し・文章を練り直すこと'],['「漁夫の利」の意味は？','争いのすきに第三者が利益を得る']],
+'熟語の読み方':[['重箱読みとは？','上が音読み・下が訓読み（本屋）'],['湯桶読みとは？','上が訓読み・下が音読み（手本）'],['熟字訓の例は？','今日・明日・大人・景色']],
+'文法の総まとめ':[['品詞を見分ける最初の手順は？','自立語か付属語か、活用するかしないか'],['「ある本」と「本がある」の「ある」の品詞は？','連体詞・動詞'],['「いろいろな」と「いろんな」の品詞は？','形容動詞・連体詞']]
+});
+
 </script>
 <script>
 /* ===================== 図（SVG） ===================== */
@@ -747,6 +1093,7 @@ const IC={
  sound:'<svg viewBox="0 0 24 24" class="ic"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>',
  chat:'<svg viewBox="0 0 24 24" class="ic"><path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H10l-4.5 4v-4h0A1.5 1.5 0 014 14.5z" fill="currentColor"/></svg>',
  mute:'<svg viewBox="0 0 24 24" class="ic"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 9.5l5 5m0-5l-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>',
+ clip:'<svg viewBox="0 0 24 24" class="ic"><rect x="4.5" y="4" width="15" height="18" rx="2.5" fill="currentColor"/><rect x="8.5" y="2" width="7" height="4.5" rx="1.5" fill="currentColor" stroke="#fff" stroke-width="1.5"/><path d="M8 12.5l2.2 2.2L16 9" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
  trophy:'<svg viewBox="0 0 24 24" class="ic"><path d="M7 3h10v5a5 5 0 01-10 0z" fill="currentColor"/><path d="M7 5H4v1.5A3.5 3.5 0 007.5 10M17 5h3v1.5a3.5 3.5 0 01-3.5 3.5" stroke="currentColor" stroke-width="2" fill="none"/><path d="M10 13h4v4h-4z" fill="currentColor"/><rect x="7" y="17" width="10" height="3.5" rx="1.2" fill="currentColor"/></svg>'
 };
 document.querySelectorAll('[data-ic]').forEach(e=>e.innerHTML=IC[e.dataset.ic]);
@@ -785,6 +1132,7 @@ function guard(){if(trialOver()){openBuy();return false}return true}
 /* ===================== 表示ヘルパー ===================== */
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const fmt=s=>esc(s).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g,'<span class="fr"><span>$1</span><span>$2</span></span>').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
+UNITS.forEach(u=>{u.nb=u.qs.length;if(ADV[u.t])u.qs=u.qs.concat(ADV[u.t])});
 const GL=[...new Set(UNITS.map(u=>u.g))];
 UNITS.forEach((u,i)=>{u.i=i;u.n=UNITS.filter((x,j)=>x.g===u.g&&j<i).length+1;u.key=u.g+'-'+u.n});
 const starsOf=u=>PROG[u.key]||0;
@@ -830,9 +1178,10 @@ function streak(){const d=new Set(lj(DK,[]));let n=0;const t=new Date();
 
 /* ===================== 画面 ===================== */
 function go(id){document.querySelectorAll('.scr').forEach(s=>s.classList.toggle('on',s.id===id));
- document.body.classList.toggle('navon',id==='sHome'||id==='sReview');document.body.classList.toggle('home',id==='sHome'||id==='sReview');
- document.querySelectorAll('#bnav button').forEach(b=>b.classList.toggle('on',(b.dataset.k==='home'&&id==='sHome')||(b.dataset.k==='review'&&id==='sReview')));
- if(id==='sHome')renderHome();if(id==='sReview')renderReview();
+ const NAVS={sHome:'home',sReview:'review',sTest:'test'};
+ document.body.classList.toggle('navon',!!NAVS[id]);document.body.classList.toggle('home',!!NAVS[id]);
+ document.querySelectorAll('#bnav button').forEach(b=>b.classList.toggle('on',b.dataset.k===NAVS[id]));
+ if(id==='sHome')renderHome();if(id==='sReview')renderReview();if(id==='sTest')renderTest();if(id==='sCheck')renderCheck();
  window.scrollTo(0,0)}
 const XS=[0,56,80,56,0,-56,-80,-56];
 function renderHome(){
@@ -868,24 +1217,28 @@ function openUnit(i){if(!guard())return;U=UNITS[i];
  document.getElementById('pList').innerHTML=U.pt.map(p=>`<li>${fmt(p)}</li>`).join('');
  document.getElementById('senCard').hidden=!U.sen;
  if(U.sen)document.getElementById('senList').innerHTML=U.sen.map(([en,ja])=>`<li><button class="spk" onclick="say(${esc(JSON.stringify(en))})" aria-label="きく">${IC.sound}</button><div><span class="en">${esc(en)}</span><span class="ja">${fmt(ja)}</span></div></li>`).join('');
+ const ck=CK[U.t]||[];document.getElementById('ckCard').hidden=!ck.length;
+ document.getElementById('ckUnit').innerHTML=ck.map((c,k)=>ckRow(U.i,k,c,false)).join('');
  document.getElementById('exCard').hidden=!U.ex;
  if(U.ex){document.getElementById('exQ').innerHTML=fmt(U.ex.q);
  const a=document.getElementById('exA');a.innerHTML=U.ex.a.map(x=>`<li>${fmt(x)}</li>`).join('');a.classList.remove('on');}
  document.getElementById('exBtn').hidden=false;
+ document.getElementById('startBtn').textContent=U.qs.length>U.nb?`問題をとく（基本${U.nb}問＋応用${U.qs.length-U.nb}問）`:`問題をとく（${U.qs.length}問）`;
  go('sPoint')}
 function showEx(){document.getElementById('exA').classList.add('on');document.getElementById('exBtn').hidden=true}
 
 /* ===================== 問題 ===================== */
 let Q=null;
 function startQuiz(list,mode){
- const items=list||shuffle(U.qs.map((q,j)=>({u:U.i,j})));
+ const items=list||U.qs.map((q,j)=>({u:U.i,j}));
  Q={items,k:0,ok:0,miss:[],mode:mode||'unit',sel:null,state:'pick',combo:0,best:0};
  drawSfx();document.getElementById('combo').innerHTML='';
  go('sQuiz');showQ()}
 function showQ(){const it=Q.items[Q.k],u=UNITS[it.u],q=u.qs[it.j];
  Q.cur={u,q,opts:shuffle([q[1],...q[2]])};Q.sel=null;Q.state='pick';
  document.getElementById('qBar').style.width=(Q.k/Q.items.length*100)+'%';
- document.getElementById('qTag').textContent=Q.mode==='review'?`復習｜${gName(u.g)} ${u.t}`:`${Q.k+1} / ${Q.items.length}`;
+ document.getElementById('qTag').textContent=Q.mode==='review'?`復習｜${gName(u.g)} ${u.t}`:(u.qs.length>u.nb?(Q.items[Q.k].j<u.nb?'基本　':'応用　'):'')+`${Q.k+1} / ${Q.items.length}`;
+ document.getElementById('qTag').classList.toggle('adv',Q.mode!=='review'&&Q.items[Q.k].j>=u.nb);
  document.getElementById('qText').innerHTML=(q[4]?`<button class="spk big" onclick="say(${esc(JSON.stringify(q[4]))})" aria-label="きく">${IC.sound}</button>`:'')+fmt(q[0]);
  if(q[4])setTimeout(()=>say(q[4]),350);
  document.getElementById('opts').innerHTML=Q.cur.opts.map((o,n)=>`<button class="opt" data-n="${n}" onclick="pick(${n})"><span class="k">${n+1}</span><span>${fmt(o)}</span></button>`).join('');
@@ -909,13 +1262,13 @@ function check(){Q.state='done';const {q,opts,u}=Q.cur,it=Q.items[Q.k];const ok=
  document.getElementById('combo').innerHTML=Q.combo>=2?`<b>${Q.combo}問連続 正解</b>`:'';
  ls(RK,JSON.stringify(REV));
  document.getElementById('qBar').style.width=((Q.k+1)/Q.items.length*100)+'%'}
-function quitQuiz(){go(Q&&Q.mode==='review'?'sReview':'sPoint')}
+function quitQuiz(){go(Q&&Q.mode==='review'?'sReview':Q&&Q.mode==='test'?'sCheck':'sPoint')}
 function finish(){const n=Q.items.length,ok=Q.ok;let html='';
  const bonus=(Q.mode==='unit'&&ok===n)?20:0,gain=ok*10+bonus,R=addXP(gain);sfx('fin');
  const xpBlock=`<div class="xpgain"><span id="xpNum">+0 XP</span><small>正解 ${ok}問 × 10${bonus?' ＋ 全問正解ボーナス 20':''}${Q.best>=3?'　最大 '+Q.best+'問連続':''}</small></div>
   <div class="goal resgoal">${ringHTML(todayXP())}<div class="gtxt"><small>今日の目標 ${GOAL} XP</small><b>${todayXP()>=GOAL?'今日の目標クリア':'あと '+(GOAL-todayXP())+' XP'}</b>${lvHTML()}</div></div>
   ${R.goalNow?`<div class="gdone">${IC.fire}今日の目標を達成しました　連続 ${streak()}日</div>`:''}`;
- if(Q.mode==='unit'){const st=ok===n?3:ok>=n-1?2:ok>=n-2?1:0;const prev=starsOf(U);if(st>prev){PROG[U.key]=st;ls(PK,JSON.stringify(PROG))}
+ if(Q.mode==='unit'){const r=ok/n,st=r===1?3:r>=.8?2:r>=.6?1:0;const prev=starsOf(U);if(st>prev){PROG[U.key]=st;ls(PK,JSON.stringify(PROG))}
   const msg=st===3?'全問正解':st===2?'あと少しで満点':st===1?'クリア':'もう一度ポイントを確認しよう';
   html=`<div class="bigst">${[1,2,3].map(k=>`<span class="${k<=st?'on':''}" style="animation-delay:${k*.15}s">${IC.star}</span>`).join('')}</div>
   <h2>${msg}</h2><p>${esc(U.t)}</p>${xpBlock}
@@ -923,6 +1276,9 @@ function finish(){const n=Q.items.length,ok=Q.ok;let html='';
   <div class="stack">${st<3?`<button class="btn pri" onclick="startQuiz()">もう一度とく</button>`:''}
   ${nextUnit()?`<button class="btn ${st<3?'sub':'pri'}" onclick="openUnit(${nextUnit().i})">つぎの単元へ</button>`:''}
   <button class="btn sub" onclick="go('sHome')">学習の道にもどる</button></div>`}
+ else if(Q.mode==='test'){html=`<div class="bigst" style="color:var(--c)">${IC.clip}</div><h2>範囲テスト ${ok} / ${n}</h2><p>${ok===n?'範囲はばっちり。':ok>=n*.8?'あと少し。まちがえた問題を見直そう。':'チェック項目とまちがえた問題をもう一度確認しよう。'}</p>${xpBlock}
+  ${Q.miss.length?`<ul class="miss">${Q.miss.map(m=>`<li><small style="color:var(--c)">${esc(m.u.t)}</small><br>${fmt(m.q[0])}<span>正解：${fmt(m.q[1])}</span></li>`).join('')}</ul>`:''}
+  <div class="stack"><button class="btn pri" onclick="startRangeTest()">もう一度10問</button><button class="btn sub" onclick="go('sCheck')">チェック項目にもどる</button></div>`}
  else{html=`<div class="bigst" style="color:var(--green)">${IC.trophy}</div><h2>復習おわり</h2><p>${n}問中 ${ok}問 正解</p>${xpBlock}
   <p style="margin-top:6px">正解した問題は、復習リストから消えました。</p>
   <div class="stack"><button class="btn pri" onclick="go('sReview')">復習リストへ</button><button class="btn sub" onclick="go('sHome')">学習の道にもどる</button></div>`}
@@ -941,6 +1297,42 @@ function renderReview(){const el=document.getElementById('rv');
   <button class="btn pri" onclick="if(guard())startQuiz(shuffle(REVIEW_ITEMS()).slice(0,10),'review')">復習をはじめる（最大10問）</button>
   <ul class="rvl" style="margin-top:16px">${items.map(x=>`<li><small>${gName(UNITS[x.u].g)}・${esc(UNITS[x.u].t)}</small>${fmt(UNITS[x.u].qs[x.j][0])}</li>`).join('')}</ul>`}
 const REVIEW_ITEMS=()=>REV.map(id=>{const [u,j]=id.split(':').map(Number);return UNITS[u]&&UNITS[u].qs[j]?{u,j}:null}).filter(Boolean);
+
+/* ===================== テスト前チェック ===================== */
+const CKK=APP_ID+'_ck_v2',TSK=APP_ID+'_tsel_v2';
+let CKD=new Set(lj(CKK,[])),TSEL=new Set(lj(TSK,[])),ckOnly=false,ckOpenAll=false,tG=null;
+const saveCk=()=>ls(CKK,JSON.stringify([...CKD])),saveSel=()=>ls(TSK,JSON.stringify([...TSEL]));
+function ckRow(ui,k,c,big){const id=ui+':'+k,d=CKD.has(id);
+ return `<li class="ck ${d?'done':''} ${ckOpenAll?'open':''}" data-id="${id}"><button class="ckb" onclick="ckToggle('${id}',this)" aria-label="覚えた">${IC.check}</button>
+  <div class="ckq" onclick="this.parentNode.classList.toggle('open')"><b>${fmt(c[0])}</b><span class="cka">${fmt(c[1])}</span><i class="ckh">タップで答え</i></div></li>`}
+function ckToggle(id,btn){CKD.has(id)?CKD.delete(id):CKD.add(id);saveCk();const li=btn.closest('.ck');li.classList.toggle('done',CKD.has(id));
+ if(CKD.has(id))sfx('ok',0);if(document.getElementById('sCheck').classList.contains('on'))ckProgress()}
+function selUnits(){return UNITS.filter(u=>TSEL.has(u.i))}
+function renderTest(){showTrial();const el=document.getElementById('tst');if(tG===null)tG=curG();
+ const us=UNITS.filter(u=>u.g===tG),all=us.every(u=>TSEL.has(u.i));
+ const S=selUnits(),tot=S.reduce((a,u)=>a+(CK[u.t]||[]).length,0),dn=S.reduce((a,u)=>a+(CK[u.t]||[]).filter((c,k)=>CKD.has(u.i+':'+k)).length,0);
+ el.innerHTML=`<p class="tlead">テストに出る単元を選ぶと、「ここだけはチェック」の一問一答と、その範囲だけの10問テストができます。</p>
+  <div class="gtabs">${GL.map(x=>`<button class="gtab ${x===tG?'on':''}" onclick="tG=${x};renderTest()"><b>${gName(x)}</b><i>${UNITS.filter(u=>u.g===x&&TSEL.has(u.i)).length}単元</i></button>`).join('')}</div>
+  <div class="tsel"><button class="tall" onclick="selAll(${tG},${!all})">${all?'すべて外す':'すべて選ぶ'}</button>
+  ${us.map(u=>{const c=CK[u.t]||[],d=c.filter((x,k)=>CKD.has(u.i+':'+k)).length;return `<label class="tu ${TSEL.has(u.i)?'on':''}"><input type="checkbox" ${TSEL.has(u.i)?'checked':''} onchange="selU(${u.i},this.checked)"><span class="tbox">${IC.check}</span><span class="tt">${esc(u.t)}<small>覚えた ${d} / ${c.length}</small></span></label>`}).join('')}</div>
+  <div class="tsum ${S.length?'':'off'}"><div><small>選んだ範囲</small><b>${S.length}単元・チェック ${tot}項目</b><div class="lvl"><div class="lb"><i style="width:${tot?dn/tot*100:0}%"></i></div><span>覚えた ${dn} / ${tot}</span></div></div></div>
+  <div class="stack"><button class="btn ${S.length?'pri':'dis'}" onclick="if(selUnits().length&&guard())go('sCheck')">チェックをはじめる</button><button class="btn ${S.length?'sub':'dis'}" onclick="if(selUnits().length)startRangeTest()">この範囲から10問テスト</button>
+  ${S.length?`<button class="tclear" onclick="TSEL.clear();saveSel();renderTest()">選んだ範囲をすべてクリア</button>`:''}</div>`}
+function selU(i,on){on?TSEL.add(i):TSEL.delete(i);saveSel();renderTest()}
+function selAll(g,on){UNITS.filter(u=>u.g===g).forEach(u=>on?TSEL.add(u.i):TSEL.delete(u.i));saveSel();renderTest()}
+function ckProgress(){const S=selUnits();let t=0,d=0;S.forEach(u=>(CK[u.t]||[]).forEach((c,k)=>{t++;if(CKD.has(u.i+':'+k))d++}));
+ document.getElementById('ckBar').style.width=(t?d/t*100:0)+'%';document.getElementById('ckCount').textContent=`${d} / ${t}`;
+ if(t&&d===t&&!ckProgress.fired){ckProgress.fired=true;confetti(60);sfx('fin')}}
+function renderCheck(){const S=selUnits();ckProgress.fired=false;
+ document.getElementById('ckOnly').innerHTML=(ckOnly?IC.check:'')+'まだ覚えていないものだけ';document.getElementById('ckOnly').classList.toggle('on',ckOnly);
+ document.getElementById('ckOpen').textContent=ckOpenAll?'答えをかくす':'答えをすべて表示';
+ document.getElementById('ckList').innerHTML=S.map(u=>{const rows=(CK[u.t]||[]).map((c,k)=>[c,k]).filter(([c,k])=>!ckOnly||!CKD.has(u.i+':'+k));
+  if(!rows.length)return '';return `<div class="ckg"><h3>${gName(u.g)}・${esc(u.t)}</h3><ul class="ckl">${rows.map(([c,k])=>ckRow(u.i,k,c,true)).join('')}</ul></div>`}).join('')
+  ||`<div class="empty"><div>${IC.check}</div><h3>ぜんぶ覚えました</h3><p>この範囲から10問テストで仕上げよう。</p></div>`;
+ ckProgress()}
+function startRangeTest(){if(!guard())return;const S=selUnits();if(!S.length)return;
+ let pool=[];S.forEach(u=>u.qs.forEach((q,j)=>pool.push({u:u.i,j})));
+ pool=shuffle(pool).slice(0,10);startQuiz(pool,'test')}
 
 /* ===================== PWA ===================== */
 (function(){const ICON='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';
